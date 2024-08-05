@@ -1,0 +1,31 @@
+name: Reusable Workflow
+
+on:
+  workflow_call:
+    inputs:
+      name:
+        description: 'Name of the person to greet'
+        type: string
+        required: true
+        default: 'Mona'
+    secrets:
+      access-token:
+        description: 'Access token for the API'
+        required: true
+
+jobs:
+  checkout:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: ls -a
+
+  log-context-and-inputs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display github context
+        run: echo '${{ toJson(github) }}''
+      - name: Display name input
+        run: echo "Hello, ${{ inputs.name }}!"
+      - name: Display access token
+        run: echo '${{ secrets.access-token }}''
