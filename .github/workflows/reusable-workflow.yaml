@@ -24,8 +24,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Display github context
-        run: echo '${{ toJson(github) }}''
+        run: echo '${{ toJson(github) }}'
       - name: Display name input
         run: echo "Hello, ${{ inputs.name }}!"
       - name: Display access token
-        run: echo '${{ secrets.access-token }}''
+        run: echo '${{ secrets.access-token }}'
